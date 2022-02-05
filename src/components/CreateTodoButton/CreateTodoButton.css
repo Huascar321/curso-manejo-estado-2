@@ -1,0 +1,26 @@
+.create-button {
+  position: relative;
+  margin-bottom: 15px;
+  left: 43%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  border: none;
+  background: rgb(29,185,152);
+  background: linear-gradient(0deg, rgba(29,185,152,1) 0%, rgba(31,185,85,1) 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.47);
+  color: white;
+  font-size: 45px;
+}
+
+.create-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.create-button:active {
+  transform: scale(0.9);
+  transition: transform 0.3s, box-shadow 0.3s;
+}

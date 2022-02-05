@@ -1,0 +1,58 @@
+.item {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  margin: 15px;
+  /* justify-content: center; */
+  color: rgba(108, 122, 137, 0.8);
+}
+
+hr {
+  border: 0.05px rgba(108, 122, 137, 0.1) solid;
+}
+
+.item p {
+  justify-self: center;
+}
+
+.item .check-icon {
+  justify-self: center;
+  align-self: center;
+  width: 12px;
+  height: 12px;
+  background-image: url('../../../img/check-icon.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.item .remove-icon {
+  justify-self: center;
+  align-self: center;
+  width: 12px;
+  height: 12px;
+  background-image: url('../../../img/remove-icon.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.check-icon:hover, .remove-icon:hover {
+  cursor: pointer;
+  transform: scale(1.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.remove-icon:hover {
+  filter: invert(23%) sepia(98%) saturate(5960%) hue-rotate(355deg) brightness(109%) contrast(122%);
+}
+
+.check-icon:active, .remove-icon:active {
+  transform: scale(0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.check-icon--active {
+  filter: invert(52%) sepia(83%) saturate(3875%) hue-rotate(93deg) brightness(133%) contrast(115%);
+}
+
+.text--active {
+  text-decoration: line-through;
+}

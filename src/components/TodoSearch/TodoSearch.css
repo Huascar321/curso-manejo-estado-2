@@ -1,0 +1,34 @@
+/* .background input {
+  margin-top: 55px;
+  margin-left: 25px;
+  width: 250px;
+  height: 45px;
+  border-radius: 15px;
+} */
+
+.main-input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 75px;
+  margin-left: 25px;
+  width: 250px;
+  height: 35px;
+  border: 2px solid gray;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.main-input-container .icon {
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
+  background-image: url('../../../img/search-icon.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-input-container input {
+  margin-left: 8px;
+  border: none;
+  outline: none;
+}
