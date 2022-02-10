@@ -1,6 +1,8 @@
 import React from "react";
 import { TodoContext } from "../../TodoContext";
+import { TodoHeader } from "../TodoHeader";
 import { TodoSearch } from "../TodoSearch";
+import { TodoCounter } from "../TodoCounter";
 import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
 import { CreateTodoButton } from "../CreateTodoButton";
@@ -19,28 +21,34 @@ function AppUI() {
     deleteTodo,
     openModal,
     setOpenModal,
+    searchValue, 
+    setSearchValue
   } = React.useContext(TodoContext);
   return (
     <>
       <div className="container">
-        <section className="main">
-          <h1>やること</h1>
-          <TodoSearch />
-        </section>
+        <TodoHeader>
+          <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+        </TodoHeader>
         <TodoList total={totalTodos} completed={completedTodos}>
-          {searchedTodos.map((todo) => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />
-          ))}
-          {error && <p className="effect-p">Desespérate, hubo un error...</p>}
-          {loading && (
-            <ThreeDots/>
-          )}
+          <ul>
+            {searchedTodos.map((todo) => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            ))}
+            {error && <p className="effect-p">Desespérate, hubo un error...</p>}
+            {loading && (
+              <ThreeDots/>
+            )}
+            <li>
+              <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos}/>
+            </li>
+          </ul>
         </TodoList>
 
         {!!openModal && (
