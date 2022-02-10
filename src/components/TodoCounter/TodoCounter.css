@@ -3,3 +3,7 @@
   color: rgba(108, 122, 137, 0.8);
   text-align: center;
 }
+
+.TodoCounter--loading {
+  opacity: 25%;
+}

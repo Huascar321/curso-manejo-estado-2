@@ -32,3 +32,7 @@
   border: none;
   outline: none;
 }
+
+.main-input-container input:disabled {
+  opacity: 25%;
+}

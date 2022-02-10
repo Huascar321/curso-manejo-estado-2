@@ -1,10 +1,14 @@
 import React from 'react';
 
-function TodoHeader({ children }) {
+function TodoHeader({ children, loading }) {
   return(
     <header>
       <h1>やること</h1>
-      {children}
+      {
+        React.Children
+          .toArray(children)
+          .map(child => React.cloneElement(child, { loading }))
+      }
     </header>
   );
 }

@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <TodoHeader>
+        <TodoHeader loading={loading}>
           <TodoSearch
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -47,7 +47,7 @@ function App() {
           onError={() => <TodoError />}
           onLoading={() => <TodoLoading />}
           onEmptySearchResults={(searchText) => <p style={{color: "black"}}>No hay resultados para {searchText}</p>}
-          /* render={(todo) => (
+          render={(todo) => (
             <TodoItem
               key={todo.text}
               text={todo.text}
@@ -74,10 +74,11 @@ function App() {
             <TodoCounter
               totalTodos={totalTodos}
               completedTodos={completedTodos}
+              loading={loading}
             />
-          )} */
+          )}
         >
-          {(todo) => (
+          {/* {(todo) => (
             <TodoItem
               key={todo.text}
               text={todo.text}
@@ -99,7 +100,7 @@ function App() {
                 />
               }
             />
-          )}
+          )} */}
         </TodoList>
 
         {!!openModal && (
