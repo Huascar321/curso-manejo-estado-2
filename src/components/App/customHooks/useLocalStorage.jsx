@@ -1,5 +1,4 @@
 import React from "react";
-import { TodoContext } from "../TodoContext";
 
 function useLocalStorage(itemName, initialValue) {
   const [error, setError] = React.useState(false);

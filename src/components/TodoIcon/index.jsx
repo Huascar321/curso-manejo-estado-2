@@ -1,13 +1,11 @@
 import React from "react";
-import { TodoContext } from "../../TodoContext";
 
-function TodoIcon(props) {
-  const { iconColor } = React.useContext(TodoContext);
+function TodoIcon({ iconColor, onComplete, onDelete, completed }) {
 
   return (
     <>
-      {!!props.onComplete && <span className={`check-icon ${props.completed && "check-icon--active"}`} onClick={props.onComplete}></span>}
-      {!!props.onDelete && <span className="remove-icon" onClick={props.onDelete}></span>}
+      {!!onComplete && <span className={`check-icon ${completed && "check-icon--active"}`} onClick={onComplete}></span>}
+      {!!onDelete && <span className="remove-icon" onClick={onDelete}></span>}
     </>
   );
 }

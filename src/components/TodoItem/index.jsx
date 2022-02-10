@@ -2,13 +2,13 @@ import React from "react";
 import { TodoIcon } from "../TodoIcon";
 import "./TodoItem.css";
 
-function TodoItem(props) {
+function TodoItem({ left,right,completed,text }) {
   return (
     <>
       <li className="item">
-        <TodoIcon onComplete={props.onComplete} completed={props.completed}/>
-        <p className={`${props.completed && "text--active"}`}>{props.text}</p>
-        <TodoIcon onDelete={props.onDelete} completed={props.completed}/>
+        {left}
+        <p className={`${completed && "text--active"}`}>{text}</p>
+        {right}
       </li>
       <hr></hr>
     </>

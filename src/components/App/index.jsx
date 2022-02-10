@@ -1,13 +1,87 @@
 import React from "react";
-import { TodoProvider } from "../../TodoContext";
-import { AppUI } from "./AppUI";
+import { useTodos } from "./customHooks/useTodos";
+import { TodoHeader } from "../TodoHeader";
+import { TodoSearch } from "../TodoSearch";
+import { TodoCounter } from "../TodoCounter";
+import { TodoList } from "../TodoList";
+import { TodoItem } from "../TodoItem";
+import { TodoIcon } from "../TodoIcon";
+import { CreateTodoButton } from "../CreateTodoButton";
+import { Modal } from "../Modal";
+import { TodoForm } from "../TodoForm";
+import { ThreeDots } from "../../states/LoadingState";
 
 function App() {
+  const {
+    error,
+    loading,
+    searchedTodos,
+    completedTodos,
+    completeTodo,
+    totalTodos,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+    searchValue,
+    setSearchValue,
+    addTodo,
+    iconColor,
+  } = useTodos();
 
   return (
-    <TodoProvider>
-      <AppUI />
-    </TodoProvider>
+    <>
+      <div className="container">
+        <TodoHeader>
+          <TodoSearch
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+        </TodoHeader>
+        <TodoList total={totalTodos} completed={completedTodos}>
+          <ul>
+            {searchedTodos.map((todo) => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+                left={
+                  <TodoIcon
+                    iconColor={iconColor}
+                    onComplete={() => completeTodo(todo.text)}
+                    completed={todo.completed}
+                  />
+                }
+                right={
+                  <TodoIcon
+                    iconColor={iconColor}
+                    onDelete={() => deleteTodo(todo.text)}
+                    completed={todo.completed}
+                  />
+                }
+              />
+            ))}
+            {error && <p className="effect-p">Desespérate, hubo un error...</p>}
+            {loading && <ThreeDots />}
+            <li>
+              <TodoCounter
+                totalTodos={totalTodos}
+                completedTodos={completedTodos}
+              />
+            </li>
+          </ul>
+        </TodoList>
+
+        {!!openModal && (
+          <Modal setOpenModal={setOpenModal}>
+            <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
+          </Modal>
+        )}
+
+        <CreateTodoButton setOpenModal={setOpenModal} />
+      </div>
+    </>
   );
 }
 
