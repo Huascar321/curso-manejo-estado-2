@@ -1,7 +1,7 @@
 import React from 'react'
 import ContentLoader from 'react-content-loader'
 
-const ThreeDots = props => (
+const TodoLoading = props => (
   <ContentLoader
     viewBox="0 0 400 140"
     height={140}
@@ -15,4 +15,4 @@ const ThreeDots = props => (
   </ContentLoader>
 )
 
-export { ThreeDots };
+export { TodoLoading };

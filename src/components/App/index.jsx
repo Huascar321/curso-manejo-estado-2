@@ -9,7 +9,8 @@ import { TodoIcon } from "../TodoIcon";
 import { CreateTodoButton } from "../CreateTodoButton";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
-import { ThreeDots } from "../../states/LoadingState";
+import { TodoError } from "../TodoError";
+import { TodoLoading } from "../../states/LoadingState";
 
 function App() {
   const {
@@ -37,41 +38,42 @@ function App() {
             setSearchValue={setSearchValue}
           />
         </TodoHeader>
-        <TodoList total={totalTodos} completed={completedTodos}>
-          <ul>
-            {searchedTodos.map((todo) => (
-              <TodoItem
-                key={todo.text}
-                text={todo.text}
-                completed={todo.completed}
-                onComplete={() => completeTodo(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
-                left={
-                  <TodoIcon
-                    iconColor={iconColor}
-                    onComplete={() => completeTodo(todo.text)}
-                    completed={todo.completed}
-                  />
-                }
-                right={
-                  <TodoIcon
-                    iconColor={iconColor}
-                    onDelete={() => deleteTodo(todo.text)}
-                    completed={todo.completed}
-                  />
-                }
-              />
-            ))}
-            {error && <p className="effect-p">Desespérate, hubo un error...</p>}
-            {loading && <ThreeDots />}
-            <li>
-              <TodoCounter
-                totalTodos={totalTodos}
-                completedTodos={completedTodos}
-              />
-            </li>
-          </ul>
-        </TodoList>
+        <TodoList
+          error={error}
+          loading={loading}
+          searchedTodos={searchedTodos}
+          onError={() => <TodoError />}
+          onLoading={() => <TodoLoading />}
+          render={(todo) => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+              left={
+                <TodoIcon
+                  iconColor={iconColor}
+                  onComplete={() => completeTodo(todo.text)}
+                  completed={todo.completed}
+                />
+              }
+              right={
+                <TodoIcon
+                  iconColor={iconColor}
+                  onDelete={() => deleteTodo(todo.text)}
+                  completed={todo.completed}
+                />
+              }
+            />
+          )}
+          renderCounter={() => (
+            <TodoCounter
+              totalTodos={totalTodos}
+              completedTodos={completedTodos}
+            />
+          )}
+        />
 
         {!!openModal && (
           <Modal setOpenModal={setOpenModal}>
