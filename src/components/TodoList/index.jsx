@@ -1,16 +1,19 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import './TodoList.css';
 
 function TodoList(props) {
+  const renderFunc = props.children || props.render;
+
   return (
     <section className="TodoList-container">
       <ul>
         {props.error && props.onError()}
         {props.loading && props.onLoading()}
-        {props.searchedTodos.map(props.render)}
+        {props.searchedTodos.map(renderFunc)}
+        {/* {props.searchedTodos.map(props.render)} */}
+        {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
         <li>
-          {props.renderCounter()}
+          {/* {props.renderCounter()} */}
         </li>
       </ul>
     </section>
