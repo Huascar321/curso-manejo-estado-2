@@ -5,9 +5,10 @@ function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
+    sincronizeItem: sincronizeTodos,
     loading,
     error,
-    setError,
+    setError
   } = useLocalStorage("TODOS_V1", []);
 
   const [searchValue, setSearchValue] = React.useState("");
@@ -65,6 +66,7 @@ function useTodos() {
     setOpenModal,
     iconColor,
     setIconColor,
+    sincronizeTodos,
   };
 }
 

@@ -11,6 +11,7 @@ function TodoList(props) {
         {props.loading && props.onLoading()}
         {props.searchedTodos.map(renderFunc)}
         {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
+        {/* {(!props.loading && !props.error) && props.searchedTodos.map(renderFunc)} */}
         <li>
           {props.renderCounter()}
         </li>

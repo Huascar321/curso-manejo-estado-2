@@ -1,5 +1,4 @@
 import React from "react";
-import { TodoIcon } from "../TodoIcon";
 import "./TodoItem.css";
 
 function TodoItem({ left,right,completed,text }) {
