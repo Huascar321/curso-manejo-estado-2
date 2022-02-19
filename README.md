@@ -1,2 +1,1 @@
-DEMO here:
-https://huascar321.github.io/curso-intro-react/
+![alt text](https://i.ibb.co/HgZFCnH/Capture.png)
