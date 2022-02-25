@@ -5,7 +5,12 @@ function useLocalStorage(itemName, initialValue) {
     reducer,
     initialState({ initialValue })
   );
-  const { sincronizedItem, error, loading, item } = state;
+  const { 
+    sincronizedItem, 
+    error, 
+    loading, 
+    item 
+  } = state;
 
   // ACTIONS CREATORS
   const onError = (error) =>

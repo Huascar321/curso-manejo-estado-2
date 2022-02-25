@@ -14,21 +14,26 @@ import { TodoLoading } from "../../states/LoadingState";
 import { ChangeAlert } from "../ChangeAlert";
 
 function App() {
+  const { state, stateUpdaters } = useTodos();
+
   const {
-    error,
     loading,
-    searchedTodos,
-    completedTodos,
-    completeTodo,
+    error,
     totalTodos,
-    deleteTodo,
-    openModal,
-    setOpenModal,
+    completedTodos,
     searchValue,
+    searchedTodos,
+    openModal,
+  } = state;
+
+  const {
     setSearchValue,
     addTodo,
+    completeTodo,
+    deleteTodo,
+    setOpenModal,
     sincronizeTodos,
-  } = useTodos();
+  } = stateUpdaters;
 
   return (
     <>
