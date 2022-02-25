@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoIcon({ iconColor, onComplete, onDelete, completed }) {
+function TodoIcon({ onComplete, onDelete, completed }) {
 
   return (
     <>

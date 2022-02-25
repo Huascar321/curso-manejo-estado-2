@@ -8,14 +8,14 @@ function useTodos() {
     sincronizeItem: sincronizeTodos,
     loading,
     error,
-    setError
   } = useLocalStorage("TODOS_V1", []);
 
   const [searchValue, setSearchValue] = React.useState("");
   const [openModal, setOpenModal] = React.useState(false);
-  const [iconColor, setIconColor] = React.useState("green");
+
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
+  
   let searchedTodos = [];
 
   if (!searchValue.length >= 1) {
@@ -64,8 +64,6 @@ function useTodos() {
     deleteTodo,
     openModal,
     setOpenModal,
-    iconColor,
-    setIconColor,
     sincronizeTodos,
   };
 }

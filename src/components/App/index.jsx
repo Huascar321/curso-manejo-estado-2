@@ -13,7 +13,6 @@ import { TodoError } from "../TodoError";
 import { TodoLoading } from "../../states/LoadingState";
 import { ChangeAlert } from "../ChangeAlert";
 
-
 function App() {
   const {
     error,
@@ -28,8 +27,7 @@ function App() {
     searchValue,
     setSearchValue,
     addTodo,
-    iconColor,
-    sincronizeTodos
+    sincronizeTodos,
   } = useTodos();
 
   return (
@@ -63,14 +61,12 @@ function App() {
               onDelete={() => deleteTodo(todo.text)}
               left={
                 <TodoIcon
-                  iconColor={iconColor}
                   onComplete={() => completeTodo(todo.text)}
                   completed={todo.completed}
                 />
               }
               right={
                 <TodoIcon
-                  iconColor={iconColor}
                   onDelete={() => deleteTodo(todo.text)}
                   completed={todo.completed}
                 />
@@ -94,14 +90,12 @@ function App() {
               onDelete={() => deleteTodo(todo.text)}
               left={
                 <TodoIcon
-                  iconColor={iconColor}
                   onComplete={() => completeTodo(todo.text)}
                   completed={todo.completed}
                 />
               }
               right={
                 <TodoIcon
-                  iconColor={iconColor}
                   onDelete={() => deleteTodo(todo.text)}
                   completed={todo.completed}
                 />
@@ -117,9 +111,7 @@ function App() {
         )}
 
         <CreateTodoButton setOpenModal={setOpenModal} />
-        <ChangeAlert 
-          sincronize={sincronizeTodos}
-        />
+        <ChangeAlert sincronize={sincronizeTodos} />
       </div>
     </>
   );
